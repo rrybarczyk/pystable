@@ -1,7 +1,9 @@
 import os
 import pandas as pd
 import pystable
-import utils
+
+LIBSTABLE_PATH = 'libstable/stable/libs/libstable.so'
+
 
 def read_helpers(file_name: str):
     path = os.path.dirname(os.path.realpath(__file__))
@@ -11,8 +13,12 @@ def read_helpers(file_name: str):
 
     return pd.read_csv(path)
 
+
 def run() -> None:
-    lib = pystable.load_libstable()
+    path = os.path.dirname(os.path.realpath(__file__))
+    path = os.path.abspath(os.path.join(path, os.pardir))
+    path = os.path.abspath(os.path.join(path, LIBSTABLE_PATH))
+    lib = pystable.load_libstable(path)
     dist_params = {
             'alpha': 1.3278285879842862,
             'beta': 0.0816835526225623,

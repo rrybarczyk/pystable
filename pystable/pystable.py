@@ -1,10 +1,9 @@
-import utils
 import ctypes as ct
 import typing as tp
 
 
-def load_libstable() -> ct.CDLL:
-    return ct.cdll.LoadLibrary(utils.libstable_path())
+def load_libstable(path) -> ct.CDLL:
+    return ct.cdll.LoadLibrary(path)
 
 
 class STABLE_DIST(ct.Structure):
